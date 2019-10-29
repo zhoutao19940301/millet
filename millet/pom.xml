@@ -12,6 +12,7 @@
     <artifactId>millet</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>millet</name>
+    <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -38,6 +39,43 @@
                 <version>8.0.18</version>
                 <scope>runtime</scope>
             </dependency>
+            <!-- 引入swagger2包 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <!-- 引入swagger-ui包  -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <!-- 引入swagger-bootstrap-ui包 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>1.8.3</version>
+            </dependency>
+            <!--java persistence-->
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>1.0</version>
+            </dependency>
+            <!--通用Mapper -->
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper</artifactId>
+                <version>3.4.0</version>
+            </dependency>
+            <!--分页-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper</artifactId>
+                <version>4.0.0</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 
