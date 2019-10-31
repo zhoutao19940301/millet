@@ -1,19 +1,13 @@
 package com.zmm.milletucapi.dao;
 
 import com.zmm.milletucapi.entity.GoodsType;
-import org.springframework.stereotype.Repository;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 
-@Repository
-public interface GoodsTypeMapper {
-    int deleteByPrimaryKey(Integer id);
+@Mapper
+public interface GoodsTypeMapper extends MyMapper<GoodsType> {
 
-    int insert(GoodsType record);
+    List<GoodsType> findAllGoods();
 
-    GoodsType selectByPrimaryKey(Integer id);
-
-    List<GoodsType> selectAll();
-
-    int updateByPrimaryKey(GoodsType record);
 }

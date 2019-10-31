@@ -1,17 +1,23 @@
 package com.zmm.milletucapi.controller;
 
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.*;
+import com.zmm.milletucapi.common.Response;
+import com.zmm.milletucapi.entity.GoodsType;
+import com.zmm.milletucapi.service.GoodsTypeService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
-@Api(value="商品分类controller",tags={"商品分类操作接口"})
 @RestController
 @RequestMapping("goodsType")
 public class GoodsTypeController {
 
-    @GetMapping("/getAllType")
-    @ApiOperation(value = "获取所有分类大类")
-    public String userLogin(){
-        return "hehe";
+    @Autowired
+    private GoodsTypeService goodsTypeService;
+
+    @GetMapping("findAll")
+    public Response<GoodsType> findAll(){
+        return new Response<GoodsType>(goodsTypeService.findAll());
     }
+
 }

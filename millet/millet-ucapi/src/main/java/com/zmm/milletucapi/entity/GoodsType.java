@@ -1,24 +1,37 @@
 package com.zmm.milletucapi.entity;
 
-import org.springframework.stereotype.Component;
+import com.zmm.milletucapi.common.BaseEntity;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-import java.io.Serializable;
+import javax.persistence.*;
 
-@Component
-public class GoodsType implements Serializable {
+@ApiModel( description = "商品分类表")
+@Table(name = "goods_type")
+public class GoodsType extends BaseEntity {
+    @ApiModelProperty(value = "商品分类id" )
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    private String cat_name;
+    @ApiModelProperty(value = "分类名称" )
+    @Column(name = "cat_name")
+    private String catName;
 
-    private String cat_desc;
+    @ApiModelProperty(value = "分类描述" )
+    @Column(name = "cat_desc")
+    private String catDesc;
 
+    @ApiModelProperty(value = "分类的关键字,可能是为了搜索" )
     private String keywords;
 
-    private Integer parent_id;
+    @ApiModelProperty(value = "该分类的父类ID,取值于该表的id字段" )
+    @Column(name = "parent_id")
+    private Integer parentId;
 
-    private Integer sort_order;
-
-    private static final long serialVersionUID = 1L;
+    @ApiModelProperty(value = "该分类在页面显示的顺序,数字越大顺序越靠后,同数字,id在前的先显示" )
+    @Column(name = "sort_order")
+    private Integer sortOrder;
 
     public Integer getId() {
         return id;
@@ -28,20 +41,20 @@ public class GoodsType implements Serializable {
         this.id = id;
     }
 
-    public String getCat_name() {
-        return cat_name;
+    public String getCatName() {
+        return catName;
     }
 
-    public void setCat_name(String cat_name) {
-        this.cat_name = cat_name == null ? null : cat_name.trim();
+    public void setCatName(String catName) {
+        this.catName = catName;
     }
 
-    public String getCat_desc() {
-        return cat_desc;
+    public String getCatDesc() {
+        return catDesc;
     }
 
-    public void setCat_desc(String cat_desc) {
-        this.cat_desc = cat_desc == null ? null : cat_desc.trim();
+    public void setCatDesc(String catDesc) {
+        this.catDesc = catDesc;
     }
 
     public String getKeywords() {
@@ -49,23 +62,23 @@ public class GoodsType implements Serializable {
     }
 
     public void setKeywords(String keywords) {
-        this.keywords = keywords == null ? null : keywords.trim();
+        this.keywords = keywords;
     }
 
-    public Integer getParent_id() {
-        return parent_id;
+    public Integer getParentId() {
+        return parentId;
     }
 
-    public void setParent_id(Integer parent_id) {
-        this.parent_id = parent_id;
+    public void setParentId(Integer parentId) {
+        this.parentId = parentId;
     }
 
-    public Integer getSort_order() {
-        return sort_order;
+    public Integer getSortOrder() {
+        return sortOrder;
     }
 
-    public void setSort_order(Integer sort_order) {
-        this.sort_order = sort_order;
+    public void setSortOrder(Integer sortOrder) {
+        this.sortOrder = sortOrder;
     }
 
     @Override
@@ -75,12 +88,11 @@ public class GoodsType implements Serializable {
         sb.append(" [");
         sb.append("Hash = ").append(hashCode());
         sb.append(", id=").append(id);
-        sb.append(", cat_name=").append(cat_name);
-        sb.append(", cat_desc=").append(cat_desc);
+        sb.append(", catName=").append(catName);
+        sb.append(", catDesc=").append(catDesc);
         sb.append(", keywords=").append(keywords);
-        sb.append(", parent_id=").append(parent_id);
-        sb.append(", sort_order=").append(sort_order);
-        sb.append(", serialVersionUID=").append(serialVersionUID);
+        sb.append(", parentId=").append(parentId);
+        sb.append(", sortOrder=").append(sortOrder);
         sb.append("]");
         return sb.toString();
     }

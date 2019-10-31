@@ -12,6 +12,7 @@
     <artifactId>millet</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>millet</name>
+    <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
 
     <properties>
@@ -20,7 +21,6 @@
 
     <dependencyManagement>
         <dependencies>
-            <!-- 引入springboot 父类  -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -28,17 +28,15 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
-            <!-- 引入springboot mybatis  -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>2.1.1</version>
             </dependency>
-            <!-- 引入mysql connector  -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>5.1.47</version>
+                <version>8.0.18</version>
                 <scope>runtime</scope>
             </dependency>
             <!-- 引入swagger2包 -->
@@ -65,6 +63,29 @@
                 <artifactId>persistence-api</artifactId>
                 <version>1.0</version>
             </dependency>
+            <!--通用Mapper -->
+<!--            <dependency>-->
+<!--                <groupId>tk.mybatis</groupId>-->
+<!--                <artifactId>mapper</artifactId>-->
+<!--                <version>3.4.0</version>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>tk.mybatis</groupId>
+                <artifactId>mapper-spring-boot-starter</artifactId>
+                <version>2.1.5</version>
+            </dependency>
+            <!--分页-->
+<!--            <dependency>-->
+<!--                <groupId>com.github.pagehelper</groupId>-->
+<!--                <artifactId>pagehelper</artifactId>-->
+<!--                <version>4.0.0</version>-->
+<!--            </dependency>-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>1.2.5</version>
+            </dependency>
+
         </dependencies>
     </dependencyManagement>
 

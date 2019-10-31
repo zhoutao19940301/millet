@@ -2,41 +2,27 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.zmm.milletucapi.dao.GoodsTypeMapper">
   <resultMap id="BaseResultMap" type="com.zmm.milletucapi.entity.GoodsType">
+    <!--
+      WARNING - @mbg.generated
+    -->
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="cat_name" jdbcType="VARCHAR" property="cat_name" />
-    <result column="cat_desc" jdbcType="VARCHAR" property="cat_desc" />
+    <result column="cat_name" jdbcType="VARCHAR" property="catName" />
+    <result column="cat_desc" jdbcType="VARCHAR" property="catDesc" />
     <result column="keywords" jdbcType="VARCHAR" property="keywords" />
-    <result column="parent_id" jdbcType="INTEGER" property="parent_id" />
-    <result column="sort_order" jdbcType="INTEGER" property="sort_order" />
+    <result column="parent_id" jdbcType="INTEGER" property="parentId" />
+    <result column="sort_order" jdbcType="INTEGER" property="sortOrder" />
   </resultMap>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from goods_type
-    where id = #{id,jdbcType=INTEGER}
-  </delete>
-  <insert id="insert" parameterType="com.zmm.milletucapi.entity.GoodsType">
-    insert into goods_type (id, cat_name, cat_desc, 
-      keywords, parent_id, sort_order
-      )
-    values (#{id,jdbcType=INTEGER}, #{cat_name,jdbcType=VARCHAR}, #{cat_desc,jdbcType=VARCHAR}, 
-      #{keywords,jdbcType=VARCHAR}, #{parent_id,jdbcType=INTEGER}, #{sort_order,jdbcType=INTEGER}
-      )
-  </insert>
-  <update id="updateByPrimaryKey" parameterType="com.zmm.milletucapi.entity.GoodsType">
-    update goods_type
-    set cat_name = #{cat_name,jdbcType=VARCHAR},
-      cat_desc = #{cat_desc,jdbcType=VARCHAR},
-      keywords = #{keywords,jdbcType=VARCHAR},
-      parent_id = #{parent_id,jdbcType=INTEGER},
-      sort_order = #{sort_order,jdbcType=INTEGER}
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
-    select id, cat_name, cat_desc, keywords, parent_id, sort_order
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, cat_name, cat_desc, keywords, parent_id, sort_order
+  </sql>
+
+  <select id="findAllGoods" resultMap="BaseResultMap" >
+    select
+        <include refid="Base_Column_List" />
     from goods_type
-    where id = #{id,jdbcType=INTEGER}
-  </select>
-  <select id="selectAll" resultMap="BaseResultMap">
-    select id, cat_name, cat_desc, keywords, parent_id, sort_order
-    from goods_type
+
   </select>
 </mapper>
