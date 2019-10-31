@@ -1,3 +1,4 @@
+-- 2019-10-27
 CREATE TABLE `goods` (
   `id` int(11) NOT NULL AUTO_INCREMENT COMMENT '商品id',
   `goods_type` int(11) DEFAULT NULL COMMENT '商品所属类型id，取值表goods_type的id',

@@ -20,6 +20,7 @@
 
     <dependencyManagement>
         <dependencies>
+            <!-- 引入springboot 父类  -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -27,16 +28,42 @@
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
+            <!-- 引入springboot mybatis  -->
             <dependency>
                 <groupId>org.mybatis.spring.boot</groupId>
                 <artifactId>mybatis-spring-boot-starter</artifactId>
                 <version>2.1.1</version>
             </dependency>
+            <!-- 引入mysql connector  -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
-                <version>8.0.18</version>
+                <version>5.1.47</version>
                 <scope>runtime</scope>
+            </dependency>
+            <!-- 引入swagger2包 -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <!-- 引入swagger-ui包  -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>2.9.2</version>
+            </dependency>
+            <!-- 引入swagger-bootstrap-ui包 -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>swagger-bootstrap-ui</artifactId>
+                <version>1.8.3</version>
+            </dependency>
+            <!--java persistence-->
+            <dependency>
+                <groupId>javax.persistence</groupId>
+                <artifactId>persistence-api</artifactId>
+                <version>1.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
