@@ -15,3 +15,16 @@ pagehelper:
   reasonable: true
   supportMethodsArguments: true
   params: count=countSql
+
+config:
+  path:
+    #该路径下GET请求放行，其他拦截
+    normal:
+
+    #该路径下任何类型请求均拦截
+    special:
+      - /showUser
+      - /goodsType
+    #该路径下任何请求均放行
+    exclude:
+      - /mybatisPlus
