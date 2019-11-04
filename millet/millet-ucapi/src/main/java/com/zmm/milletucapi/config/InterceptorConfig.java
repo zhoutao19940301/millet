@@ -20,20 +20,14 @@ import java.util.List;
  **/
 @Configuration
 //@Profile({"prod","test"})  //只有测试和生产环境，拦截器才启作用
-@ConfigurationProperties(prefix = "config.path")  //读取配置文件
+//@ConfigurationProperties(prefix = "config.path")  //读取配置文件
 public class InterceptorConfig implements WebMvcConfigurer {
 
     @Autowired
     private LoginInterceptor loginInterceptor;
 
-    @Value("${normal}")
-    private List<String> normal;
-
-    @Value("${special}")
-    private List<String> special;
-
-    @Value("${exclude}")
-    private List<String> exclude;
+    @Autowired
+    private ConfigData configData;
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
@@ -44,10 +38,12 @@ public class InterceptorConfig implements WebMvcConfigurer {
 //        registry.addInterceptor(loginInterceptor).addPathPatterns("/**")
 //                .excludePathPatterns("/stuInfo/getAllStuInfoA","/account/register");
 
-        InterceptorRegistration ir=registry.addInterceptor(loginInterceptor);
-        ir.addPathPatterns(special);
-        ir.excludePathPatterns("/login","/js/**","/html/**","/image/**","/css/**");
+        InterceptorRegistration ir = registry.addInterceptor(loginInterceptor);
+        ir.addPathPatterns(configData.getInclude());
+//        ir.excludePathPatterns("/login","/js/**","/html/**","/image/**","/css/**");
+        ir.excludePathPatterns(configData.getExclude());
     }
+
 
 
 }
