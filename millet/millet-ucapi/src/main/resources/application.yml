@@ -20,7 +20,7 @@ config:
   path:
     #该路径下任何类型请求均拦截
     include:
-      - /goodsType/**
+#      - /goodsType/**
       - /role
     #该路径下任何请求均放行
     exclude:

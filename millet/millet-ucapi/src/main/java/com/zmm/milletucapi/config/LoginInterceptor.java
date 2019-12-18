@@ -1,11 +1,15 @@
 package com.zmm.milletucapi.config;
 
+import com.zmm.milletucapi.common.IStateCode;
+import com.zmm.milletucapi.common.MessageResult;
 import org.springframework.stereotype.Component;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+import java.io.PrintWriter;
 
 /**
  * @Descriprion: 拦截器实现
@@ -22,9 +26,16 @@ public class LoginInterceptor implements HandlerInterceptor {
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
             throws Exception {
-        System.out.println("开始拦截.........");
-        //业务代码
-        return false;
+        System.out.println("开始请求地址拦截");
+        HttpSession session = request.getSession(false);
+
+        if (session != null && session.getAttribute("user") != null) {
+            return true;
+        } else {
+            PrintWriter printWriter = response.getWriter();
+            printWriter.write("{resultCode:"+ IStateCode.NOT_LOGGED_IN +",resultMsg:not login!}");
+            return false;
+        }
     }
 
     /**

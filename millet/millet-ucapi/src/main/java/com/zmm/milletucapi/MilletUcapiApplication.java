@@ -7,7 +7,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
 @EnableSwagger2
-@MapperScan("com.zmm.milletucapi.dao")
+@MapperScan(basePackages = {"com.zmm.milletucapi.dao","com.zmm.commonutils.dao"})
 public class MilletUcapiApplication {
 
     public static void main(String[] args) {

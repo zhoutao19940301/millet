@@ -1,12 +1,15 @@
 package com.zmm.milletucapi.entity;
 
 import com.zmm.milletucapi.common.BaseEntity;
+import com.zmm.milletucapi.utils.DictUtil;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
+import lombok.Data;
 
 import javax.persistence.*;
 
 @ApiModel( description = "商品分类表")
+@Data
 @Table(name = "goods_type")
 public class GoodsType extends BaseEntity {
     @ApiModelProperty(value = "商品分类id" )
@@ -79,6 +82,10 @@ public class GoodsType extends BaseEntity {
 
     public void setSortOrder(Integer sortOrder) {
         this.sortOrder = sortOrder;
+    }
+
+    public String getZdMc(){
+        return DictUtil.getValue("sys_zdsj.ZDSJMC",parentId);
     }
 
     @Override
