@@ -1,5 +1,6 @@
 package com.zmm.milletucapi.dao;
 
+import com.zmm.milletucapi.common.MyMapper;
 import com.zmm.milletucapi.entity.SysZdsj;
 import org.apache.ibatis.annotations.Param;
 

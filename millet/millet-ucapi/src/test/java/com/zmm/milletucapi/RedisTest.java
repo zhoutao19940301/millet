@@ -25,7 +25,7 @@ public class RedisTest {
      */
     @Test
     public void set() {
-        redisUtils.set("redis_key1", "redis_val1e1");
+        redisUtils.set("redis_key1", "redis_val1e1",60);
     }
 
     /**
@@ -39,7 +39,7 @@ public class RedisTest {
 
     @Test
     public void delete() {
-        redisUtils.delete("redis_key");
+        redisUtils.del("redis_key");
     }
 
 }

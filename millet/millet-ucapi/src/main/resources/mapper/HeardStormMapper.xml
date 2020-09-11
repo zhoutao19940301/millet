@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.zmm.milletucapi.dao.HeardStormDao">
+  <resultMap id="BaseResultMap" type="com.zmm.milletucapi.entity.HeardStorm">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="path" jdbcType="VARCHAR" property="path" />
+    <result column="answers" jdbcType="VARCHAR" property="answers" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="is_used" jdbcType="INTEGER" property="isUsed" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, path, answers, remark, is_used, update_time
+  </sql>
+</mapper>

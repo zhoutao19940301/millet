@@ -1,4 +1,4 @@
-package com.zmm.milletucapi.dao;
+package com.zmm.commonutils.baseclass;
 
 import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.common.MySqlMapper;

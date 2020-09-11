@@ -3,7 +3,6 @@ package com.zmm.milletucapi.config;
 import com.zmm.milletucapi.common.Response;
 import com.zmm.milletucapi.common.TkResponseCode;
 import lombok.extern.slf4j.Slf4j;
-import org.apache.commons.lang.ObjectUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.ObjectError;
@@ -103,7 +102,7 @@ public class ExceptionHandler {
     @org.springframework.web.bind.annotation.ExceptionHandler ({ HttpMessageNotReadableException.class, MethodArgumentTypeMismatchException.class })
     public Response httpMessageNotReadableException(Exception e, WebRequest req) {
         log.error(e.getMessage(),e);
-        Response response = new Response(ObjectUtils.toString(HttpStatus.BAD_REQUEST.value()),"参数解析失败");
+        Response response = new Response(HttpStatus.BAD_REQUEST.toString(),"参数解析失败");
         return response;
     }
 
