@@ -25,4 +25,69 @@
     from goods_type
 
   </select>
+
+  <select id="getContractMoneyByClassify" parameterType="com.zmm.milletucapi.entity.vo.QueryScopeVo"
+          resultType="com.zmm.milletucapi.entity.dto.ClassifyMoneyDto" >
+    SELECT
+    SUBSTRING( b.classify_id, 1, 1 ) type,
+    MONTH(t.enterperformtime) month,
+    sum(IFNULL(f.money,0)) money
+    FROM
+    contract_arrair_info t,
+    contract_instance b ,
+    contract_finance f
+    WHERE
+    b.classify_id&lt;30000
+    AND b.change_type = 0
+    AND b.delete_flag = 0
+    <if test="provinceId!=null">
+      and b.province_id = #{provinceId}
+    </if>
+    <if test="companyId!=null">
+      and b.company_id = #{companyId}
+    </if>
+
+    AND b.arrair_id = t.id
+    AND f.contract_id = b.id
+    AND YEAR(t.enterperformtime)= YEAR(CURRENT_DATE)
+
+    GROUP BY
+    SUBSTRING( b.classify_id, 1, 1 ) ,
+    MONTH(t.enterperformtime)
+    ORDER BY
+    SUBSTRING( b.classify_id, 1, 1 ) ,
+    MONTH(t.enterperformtime)
+  </select>
+
+  <select id="getContractMoneyByExpend" parameterType="com.zmm.milletucapi.entity.vo.QueryScopeVo"
+          resultType="com.zmm.milletucapi.entity.dto.ExpendMoneyDto" >
+    SELECT
+    instance.classify_name typeName,
+    sum(IFNULL( f.money, 0 )) money
+    FROM
+    contract_arrair_info arrair,
+    contract_instance instance,
+    contract_finance f
+    WHERE
+    arrair.id = instance.arrair_id
+    AND f.contract_id = instance.id
+    AND instance.change_type = 0
+    AND instance.delete_flag = 0
+    <if test="provinceId!=null">
+      and b.province_id = #{provinceId}
+    </if>
+    <if test="companyId!=null">
+      and b.company_id = #{companyId}
+    </if>
+    <if test="deptId!=null">
+      and taker.dept_id = #{deptId}
+    </if>
+    AND instance.classify_id BETWEEN 20000 and 30000
+    AND YEAR ( arrair.enterperformtime )= YEAR ( CURRENT_DATE )
+    GROUP BY
+    instance.classify_id
+    ORDER BY
+    instance.classify_id
+  </select>
+
 </mapper>
