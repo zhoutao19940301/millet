@@ -1,22 +1,22 @@
 package com.zmm.milletucapi.service;
 
+import com.zmm.milletucapi.aspect.MyLogAnnotation;
 import com.zmm.milletucapi.dao.GoodsTypeMapper;
 import com.zmm.milletucapi.entity.GoodsType;
 import com.zmm.milletucapi.entity.dto.ClassifyMoneyDto;
 import com.zmm.milletucapi.entity.dto.ExpendMoneyDto;
 import com.zmm.milletucapi.entity.vo.QueryScopeVo;
+import com.zmm.milletucapi.utils.CipherUtil;
 import com.zmm.milletucapi.utils.EasyExcelExportUtils;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.redis.core.*;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.time.LocalDateTime;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 @Service
 @Slf4j
@@ -28,6 +28,7 @@ public class GoodsTypeService {
     @Resource
     private RedisTemplate redisTemplate;
 
+    @MyLogAnnotation
     public List<GoodsType> findAll(){
         List<GoodsType> list = goodsTypeMapper.findAllGoods();
         return list;
@@ -162,19 +163,34 @@ public class GoodsTypeService {
     }
 
     public static void main(String[] args) {
-        String month = "1000";
-        int monthInt = 1000;
-        Integer type =  2;
-        System.out.println(type == 2);
+        String[] names = {"田玉西","桑乐乐","李君","吴其光","宋秀静","裘贺康","梅峰","张舫","华梦蓥","叶明亮","周小红","贺灿","胡刘浩","俞剑蕾","王琼","余周","朱长彪","罗纳","马一萍","蒋科娜","徐磊","罗颖超","蔡伊妮","姚金玲","李梦奇","李春妍","刘燕红","陆菁绯","周剑飞","陈雨露","刘蕴","吴增光","唐棠","张杰","全雅惜","何亚芳","李叶","郑旖旎","沈菲","卢月","胡爽","章雁","施卿","彭勇","高秀明","周静"};
+        Set<String> nameSet = new HashSet<>(Arrays.asList(names));
+//        for(String name : nameSet){
+//            String s = RandomUtil.randomString(10);
+//            String psw = Md5Decode.toMD5(s);
+//            System.out.println(name+":"+s + " , 加密后：" + psw);
+//        }
+        System.out.println(names.length);
+        System.out.println(nameSet.size());
+        String[] phones = {"15968420382","13506840906","15858402162","13736081833"};
+        for(String phone : phones){
+            String psw = CipherUtil.encrypt(phone);
+            System.out.println(phone+" 加密后：" + psw);
+        }
+
+        String p = "3seD+E3j1IN0HDBgAGAX+GY4U9ZITf4xp/XXJ/cQ85Y=";
+        String s = "OX8WxQFn2HyKDAjaCKE9CA==";
+        System.out.println(CipherUtil.decrypt(p));
+        System.out.println(CipherUtil.decrypt(s));
     }
 
-    @Scheduled
     public void test(){
         ValueOperations valueOperations = redisTemplate.opsForValue();
         ListOperations listOperations = redisTemplate.opsForList();
         HashOperations hashOperations = redisTemplate.opsForHash();
         SetOperations setOperations = redisTemplate.opsForSet();
         ZSetOperations zSetOperations = redisTemplate.opsForZSet();
+
     }
 
 }
