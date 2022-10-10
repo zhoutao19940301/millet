@@ -1,4 +1,4 @@
-package com.zmm.milletucapi.swagger;
+package com.zmm.activemq2.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,7 +19,7 @@ public class SwaggerConfiguration {
         return new Docket(DocumentationType.SWAGGER_2)
                 .apiInfo(apiInfo())
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("com.zmm.milletucapi.controller"))
+                .apis(RequestHandlerSelectors.basePackage("com.zmm.activemq2.controller"))
                 .paths(PathSelectors.any())
                 .build();
     }
@@ -28,7 +28,7 @@ public class SwaggerConfiguration {
         return new ApiInfoBuilder()
                 .title("swagger-bootstrap-ui RESTful APIs")
                 .description("swagger-bootstrap-ui")
-                .termsOfServiceUrl("http://localhost:8080/")
+                .termsOfServiceUrl("http://localhost:8011/")
                 .contact("developer@mail.com")
                 .version("1.0")
                 .build();

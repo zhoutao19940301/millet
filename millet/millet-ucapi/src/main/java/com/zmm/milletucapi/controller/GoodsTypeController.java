@@ -31,24 +31,5 @@ public class GoodsTypeController {
         return new Response<GoodsType>(list);
     }
 
-//    @GetMapping("findTest")
-//    public Response<GoodsType> findTest(){
-//        return new Response<GoodsType>(list);
-//    }
-
-    @GetMapping("/exportPostInfo")
-    public void exportPostInfo(HttpServletResponse response){
-        goodsTypeService.getContractMoneyByClassify(response,null);
-    }
-
-    @GetMapping("/exportByExpend")
-    public void exportByExpend(HttpServletResponse response){
-        goodsTypeService.exportByExpend(response,null);
-    }
-
-    @GetMapping("/exportExpendMonitor")
-    public void exportExpendMonitor(HttpServletResponse response) throws IOException {
-        goodsTypeService.exportExpendMonitor(response,null);
-    }
 
 }

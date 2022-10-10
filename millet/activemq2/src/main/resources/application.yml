@@ -1,0 +1,13 @@
+spring:
+  activemq:
+    broker-url: tcp://47.93.112.32:61616
+    user: admin
+    password: admin
+    packages:
+      trust-all: true
+
+server:
+  port: 8011
+  address: localhost
+  servlet:
+    context-path: /activemq
